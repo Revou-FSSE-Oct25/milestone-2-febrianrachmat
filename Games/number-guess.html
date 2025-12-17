@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Number Guessing Game | RevoFun</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<div class="game-container">
+  <h2>🔢 Number Guessing Game</h2>
+
+  <p>
+    I am thinking of a number between <strong>1 and 100</strong>.<br>
+    You have <strong>5 attempts</strong> to guess it.
+  </p>
+
+  <input 
+    type="number" 
+    id="guessInput" 
+    placeholder="Enter your guess"
+    min="1"
+    max="100"
+  >
+
+  <br>
+
+  <button id="guessBtn">Guess</button>
+
+  <p id="message">Good luck!</p>
+  <p id="attempts"></p>
+
+  <a href="../index.html">⬅ Back to Home</a>
+</div>
+
+<script src="../js/number-guess.js"></script>
+</body>
+</html>

@@ -3,29 +3,48 @@
 <head>
   <meta charset="UTF-8">
   <title>Clicker Game | RevoFun</title>
-  <link rel="stylesheet" href="../CSS/style.css">
+  <link rel="stylesheet" href="../CSS/clicker.css">
 </head>
 <body>
 
-<div class="game-container">
-  <h2>🖱️ Clicker Game</h2>
+  <main class="clicker-wrapper">
+    <section class="clicker-card">
 
-  <p>Click as fast as you can before time runs out!</p>
+      <h1 class="game-title">Clicker Challenge</h1>
+      <p class="game-desc">Click as much as you can before time runs out!</p>
 
-  <label for="nameInput">Nickname:</label><br>
-  <input type="text" id="nameInput" placeholder="Your name">
+      <div class="player-input">
+        <input type="text" id="nameInput" placeholder="Enter your nickname">
+      </div>
 
-  <p>⏱ Time Left: <span id="time">10</span></p>
-  <p>⭐ Score: <span id="score">0</span></p>
+      <div class="stats">
+        <div class="time-bar">
+          <div id="timeProgress"></div>
+        </div>
+        <div class="stat-box">
+          <span class="stat-label">Time</span>
+          <span id="time" class="stat-value">10</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-label">Score</span>
+          <span id="score" class="stat-value">0</span>
+        </div>
+      </div>
 
-  <button id="clickBtn">CLICK ME!</button>
+      <button id="clickBtn" class="click-btn">
+        CLICK!
+      </button>
 
-  <h3>🏆 Leaderboard</h3>
-  <ul id="leaderboard"></ul>
+      <div class="leaderboard-section">
+        <h3>🏆 Leaderboard</h3>
+        <ul id="leaderboard"></ul>
+      </div>
 
-  <a href="../index.html">⬅ Back to Home</a>
-</div>
+      <a href="../index.html" class="back-link">⬅ Back to Home</a>
 
-<script src="../JS/clicker.js"></script>
+    </section>
+  </main>
+
+  <script src="../JS/clicker.js"></script>
 </body>
 </html>

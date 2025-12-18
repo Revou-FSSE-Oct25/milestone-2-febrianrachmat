@@ -10,12 +10,13 @@ window.addEventListener("scroll", () => {
     header.classList.remove("scrolled");
   }
 
-  if (currentScrollY > lastScrollY && currentScrollY > 100) {
-    header.classList.add("hide");
-    if (window.innerWidth > 768) {
-  header.classList.add("hide");
-}
 
+  if (
+    currentScrollY > lastScrollY &&
+    currentScrollY > 100 &&
+    window.innerWidth > 768
+  ) {
+    header.classList.add("hide");
   } else {
     header.classList.remove("hide");
   }

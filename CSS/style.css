@@ -273,3 +273,10 @@ a:hover {
     transition: none !important;
   }
 }
+
+@media (max-width: 768px) {
+  .rf-nav a {
+    margin-left: 16px;
+    font-size: 14px;
+  }
+}

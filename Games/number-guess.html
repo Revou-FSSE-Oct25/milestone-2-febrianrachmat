@@ -1,37 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Number Guessing Game | RevoFun</title>
-  <link rel="stylesheet" href="../CSS/style.css">
+  <meta charset="UTF-8" />
+  <title>Guess The Number | RevoFun</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../CSS/number-guess.css">
 </head>
 <body>
 
-<div class="game-container">
-  <h2>🔢 Number Guessing Game</h2>
+<section class="guess-game">
+  <div class="game-card">
 
-  <p>
-    I am thinking of a number between <strong>1 and 100</strong>.<br>
-    You have <strong>5 attempts</strong> to guess it.
-  </p>
+    <h1>Guess The Number</h1>
+    <p class="subtitle">
+      Guess a number between <strong>1 – 100</strong><br>
+      You have <strong>5 attempts</strong>
+    </p>
 
-  <input 
-    type="number" 
-    id="guessInput" 
-    placeholder="Enter your guess"
-    min="1"
-    max="100"
-  >
+    <div class="number-box">?</div>
 
-  <br>
+    <input
+      type="number"
+      id="guessInput"
+      placeholder="Enter your guess"
+      min="1"
+      max="100"
+    >
 
-  <button id="guessBtn">Guess</button>
+    <button id="guessBtn">Guess</button>
 
-  <p id="message">Good luck!</p>
-  <p id="attempts"></p>
+    <p class="feedback" id="message">Good luck!</p>
+    <p class="attempt" id="attempts"></p>
 
-  <a href="../index.html">⬅ Back to Home</a>
-</div>
+    <a href="../index.html" class="back-home">← Back to Home</a>
+
+  </div>
+</section>
 
 <script src="../JS/number-guess.js"></script>
 </body>

@@ -2,28 +2,83 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>RevoFun | Play Simple Games</title>
+  <title>RevoFun</title>
   <link rel="stylesheet" href="CSS/style.css">
 </head>
 <body>
 
-<header>
-  <h1>RevoFun</h1>
-  <p>Simple games, endless fun</p>
+<header class="rf-header">
+  <div class="rf-header-inner">
+    <a href="index.html" class="rf-logo">Revo<span>Fun</span></a>
+    <nav class="rf-nav">
+      <a href="index.html">Home</a>
+      <a href="#games-section">Games  </a>
+      <a href="#about-section">About</a>
+      <a href="#contact-section">Contact</a>
+    </nav>
+  </div>
 </header>
 
-<nav>
-  <a href="Games/number-guess.html">Number Guess</a>
-  <a href="Games/rps.html">Rock Paper Scissors</a>
-  <a href="Games/clicker.html">Clicker Game</a>
-</nav>
+<section class="hero">
+  <h1 class="hero-title">
+    Code with <span>Revolution</span><br />
+    Play with <span>Fun</span>
+  </h1>
 
-<section class="about">
-  <h2>About RevoFun</h2>
-  <p>RevoFun is a fictional gaming company that provides simple and fun browser-based games.</p>
+  <p class="hero-subtitle">
+    Learn. Build. Play. Interactive browser games crafted with passion.
+  </p>
 </section>
 
-<footer>
+<section class="games-showcase" id="games">
+  <h2>Games</h2>
+
+  <div class="games-grid">
+
+    <a href="Games/number-guess.html" class="game-card">
+      <img src="Assets/GuessNumber.png" alt="Number Guess Game">
+      <div class="game-info">
+        <h3>Number Guess</h3>
+        <p>Guess the number with limited attempts.</p>
+      </div>
+    </a>
+
+    <a href="Games/rps.html" class="game-card">
+      <img src="Assets/RockPaperScissor.png" alt="Rock Paper Scissors">
+      <div class="game-info">
+        <h3>Rock Paper Scissors</h3>
+        <p>Classic hand game against the computer.</p>
+      </div>
+    </a>
+
+    <a href="Games/clicker.html" class="game-card">
+      <img src="Assets/Clicker.png" alt="Clicker Game">
+      <div class="game-info">
+        <h3>Clicker Game</h3>
+        <p>Click as fast as you can before time runs out.</p>
+      </div>
+    </a>
+  </div>
+</section>
+
+<section class="about-section" id="about">
+  <h2>About RevoFun</h2>
+
+  <p class="about-lead">
+    RevoFun is a fictional game studio created as a learning project,
+    focusing on simple, interactive, and enjoyable browser-based games.
+  </p>
+
+  <div class="about-content">
+    <p>
+      This project represents a journey of learning web development —
+      from structuring HTML, styling with CSS, to bringing interactions
+      to life using JavaScript.
+    </p>
+  </div>
+</section>
+
+<footer class="footer">
   <p>© 2025 RevoFun. Rachmat Febrian</p>
 </footer>
 

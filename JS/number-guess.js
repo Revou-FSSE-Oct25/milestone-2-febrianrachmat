@@ -1,4 +1,28 @@
-let target, attemptsLeft, gameOver;
+function saveScore(game, score) {
+  const data = JSON.parse(localStorage.getItem("leaderboards")) || {};
+  if (!data[game]) data[game] = [];
+
+  data[game].push({
+    score,
+    date: new Date().toLocaleDateString()
+  });
+
+  data[game].sort((a, b) => b.score - a.score);
+  data[game] = data[game].slice(0, 5);
+
+  localStorage.setItem("leaderboards", JSON.stringify(data));
+}
+
+function getScores(game) {
+  const data = JSON.parse(localStorage.getItem("leaderboards")) || {};
+  return data[game] || [];
+}
+
+
+let targetNumber;
+let attemptsLeft;
+let gameOver;
+
 
 const input = document.getElementById("guessInput");
 const message = document.getElementById("message");
@@ -7,20 +31,22 @@ const guessBtn = document.getElementById("guessBtn");
 const restartBtn = document.getElementById("restartBtn");
 const leaderboard = document.getElementById("leaderboard");
 
+
 guessBtn.addEventListener("click", handleGuess);
 restartBtn.addEventListener("click", initGame);
+
 
 initGame();
 
 
 function initGame() {
-  target = randomNumber();
+  targetNumber = generateRandomNumber();
   attemptsLeft = 5;
   gameOver = false;
 
+  input.value = "";
   input.disabled = false;
   guessBtn.disabled = false;
-  input.value = "";
 
   updateAttempts();
   updateMessage("Start guessing!");
@@ -32,42 +58,53 @@ function handleGuess() {
 
   const value = input.value.trim();
   const validation = validateInput(value);
+
   if (!validation.valid) {
     updateMessage(validation.message);
     return;
   }
 
-  checkGuess(Number(value));
+  processGuess(Number(value));
 }
 
 function validateInput(value) {
-  if (!value) return { valid: false, message: "Enter a number" };
-  if (!Number.isInteger(Number(value)))
-    return { valid: false, message: "Whole numbers only" };
-  if (value < 1 || value > 100)
-    return { valid: false, message: "1–100 only" };
+  if (value === "") {
+    return { valid: false, message: "Please enter a number." };
+  }
+
+  const number = Number(value);
+
+  if (!Number.isInteger(number)) {
+    return { valid: false, message: "Please enter a whole number." };
+  }
+
+  if (number < 1 || number > 100) {
+    return { valid: false, message: "Number must be between 1 and 100." };
+  }
 
   return { valid: true };
 }
 
-function checkGuess(guess) {
+function processGuess(guess) {
   attemptsLeft--;
   updateAttempts();
 
-  if (guess === target) {
-    endGame("🎉 You win!", attemptsLeft);
+  if (guess === targetNumber) {
+    endGame("🎉 Correct! You win!", attemptsLeft);
   } else if (attemptsLeft === 0) {
-    endGame(`💀 Lost! Number was ${target}`, 0);
+    endGame(`💀 Game Over! The number was ${targetNumber}`, 0);
   } else {
-    updateMessage(guess > target ? "Too high!" : "Too low!");
+    updateMessage(guess > targetNumber ? "📉 Too high!" : "📈 Too low!");
   }
 }
 
 function endGame(text, score) {
   gameOver = true;
   updateMessage(text);
+
   input.disabled = true;
   guessBtn.disabled = true;
+
   saveScore("number-guess", score);
   renderLeaderboard();
 }
@@ -80,15 +117,29 @@ function updateAttempts() {
   attempts.textContent = `Attempts left: ${attemptsLeft}`;
 }
 
-function randomNumber() {
+function generateRandomNumber() {
   return Math.floor(Math.random() * 100) + 1;
 }
 
+
 function renderLeaderboard() {
   leaderboard.innerHTML = "";
-  getScores("number-guess").forEach(s => {
+
+  const scores = getScores("number-guess");
+
+  if (scores.length === 0) {
+    leaderboard.innerHTML = "<li>No scores yet</li>";
+    return;
+  }
+
+  scores.forEach((item, index) => {
     const li = document.createElement("li");
-    li.textContent = `Score: ${s.score} (${s.date})`;
+    li.textContent = `#${index + 1} — Score: ${item.score} (${item.date})`;
+
+    if (index === 0) li.classList.add("rank-1");
+    if (index === 1) li.classList.add("rank-2");
+    if (index === 2) li.classList.add("rank-3");
+
     leaderboard.appendChild(li);
   });
 }

@@ -114,10 +114,12 @@ body {
 }
 
 #leaderboard li {
-  background: rgba(255,255,255,0.1);
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 12px;
   margin-bottom: 6px;
-  padding: 8px 10px;
   border-radius: 8px;
+  background: rgba(255,255,255,0.12);
   font-size: 14px;
 }
 
@@ -169,12 +171,6 @@ body {
   width: 100%;
   background: linear-gradient(90deg, #00ffcc, #00c6ff);
   transition: width 1s linear;
-}
-
-#leaderboard li {
-  display: flex;
-  justify-content: space-between;
-  padding: 8px 12px;
 }
 
 #leaderboard li.rank-1 {

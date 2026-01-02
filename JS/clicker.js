@@ -1,48 +1,60 @@
-let score = 0;
-let timeLeft = 10;
+let score, time, timer, gameOver;
 
+const clickBtn = document.getElementById("clickBtn");
+const restartBtn = document.getElementById("restartBtn");
 const scoreText = document.getElementById("score");
 const timeText = document.getElementById("time");
+const leaderboard = document.getElementById("leaderboard");
 
-document.getElementById("clickBtn").addEventListener("click", () => {
+clickBtn.addEventListener("click", handleClick);
+restartBtn.addEventListener("click", initGame);
+
+initGame();
+
+// ===== Functions =====
+function initGame() {
+  score = 0;
+  time = 10;
+  gameOver = false;
+
+  scoreText.textContent = score;
+  timeText.textContent = time;
+  clickBtn.disabled = false;
+
+  clearInterval(timer);
+  timer = setInterval(tick, 1000);
+
+  renderLeaderboard();
+}
+
+function handleClick() {
+  if (gameOver) return;
   score++;
   scoreText.textContent = score;
-});
+}
 
-const timer = setInterval(() => {
-  timeLeft--;
-  timeText.textContent = timeLeft;
+function tick() {
+  time--;
+  timeText.textContent = time;
 
-  if (timeLeft === 0) {
-    clearInterval(timer);
-    alert(`Game Over! Your score: ${score}`);
+  if (time === 0) {
+    endGame();
   }
-}, 1000);
+}
 
-clickBtn.classList.add("shake");
-setTimeout(() => clickBtn.classList.remove("shake"), 200);
+function endGame() {
+  gameOver = true;
+  clearInterval(timer);
+  clickBtn.disabled = true;
+  saveScore("clicker", score);
+  renderLeaderboard();
+}
 
-const totalTime = 10;
-const timeProgress = document.getElementById("timeProgress");
-
-time--;
-timeDisplay.textContent = time;
-
-const percentage = (time / totalTime) * 100;
-timeProgress.style.width = percentage + "%";
-
-timeProgress.style.width = "0%";
-
-leaderboard.innerHTML = "";
-
-scores.forEach((item, index) => {
-  const li = document.createElement("li");
-  li.textContent = `${item.name} - ${item.score}`;
-
-  if (index === 0) li.classList.add("rank-1");
-  if (index === 1) li.classList.add("rank-2");
-  if (index === 2) li.classList.add("rank-3");
-
-  leaderboard.appendChild(li);
-});
-
+function renderLeaderboard() {
+  leaderboard.innerHTML = "";
+  getScores("clicker").forEach(s => {
+    const li = document.createElement("li");
+    li.textContent = `${s.score} clicks`;
+    leaderboard.appendChild(li);
+  });
+}

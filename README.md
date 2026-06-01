@@ -64,7 +64,9 @@ _Technologies Used_
 
 3. JavaScript — Game logic and interactivity
 
-4. localStorage — Saving leaderboard data
+4. localStorage — Saving leaderboard data (shared via `utils.js`)
+
+5. Code reuse — Leaderboard helpers live in one file, loaded by each game page
 
 **_Project Structure_**
 revofun/
@@ -81,9 +83,10 @@ revofun/
 │ ├── clicker.html│
 ├── js/
 │ ├── main.js
+│ ├── utils.js          # shared saveScore / getScores (localStorage)
 │ ├── number-guess.js
 │ ├── rps.js
-│ ├── clicker.js│
+│ └── clicker.js
 ├── assets/
 │ ├── clicker.png
 │ ├── GuessNumber.png
@@ -112,6 +115,8 @@ Manipulating the DOM dynamically
 Storing data using localStorage
 
 Organizing files for a small web project
+
+Reusing shared logic (`utils.js`) instead of duplicating functions across game scripts
 
 RevoFun represents a step forward in learning web development by combining creativity, logic, and interactivity into a single project.
 This project was created as a learning assignment.

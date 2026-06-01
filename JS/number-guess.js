@@ -16,6 +16,7 @@ const attempts = document.getElementById("attempts");
 const guessBtn = document.getElementById("guessBtn");
 const restartBtn = document.getElementById("restartBtn");
 const leaderboard = document.getElementById("leaderboard");
+const gamePanel = getGamePanel();
 
 // =====================
 // INITIALIZATION
@@ -29,6 +30,7 @@ function initGame() {
   input.value = "";
   input.disabled = false;
   guessBtn.disabled = false;
+  gamePanel.classList.remove("outcome-win", "outcome-lose");
 
   updateAttempts();
   updateMessage("Start guessing!");
@@ -101,6 +103,7 @@ function endGame(text, score) {
 
   saveScore("number-guess", score);
   renderLeaderboard();
+  playOutcomeAnimation(gamePanel, score > 0 ? "win" : "lose");
 }
 
 // =====================

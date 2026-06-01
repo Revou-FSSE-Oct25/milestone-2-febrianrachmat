@@ -13,6 +13,7 @@ let guestPromptShown = false;
 const result = document.getElementById("result");
 const winsText = document.getElementById("wins");
 const leaderboard = document.getElementById("leaderboard");
+const gamePanel = getGamePanel();
 
 // =====================
 // GAME LOGIC
@@ -32,6 +33,9 @@ function play(player) {
   if (outcome === "Win") {
     wins++;
     winsText.textContent = wins;
+    playOutcomeAnimation(gamePanel, "win");
+  } else if (outcome === "Lose") {
+    playOutcomeAnimation(gamePanel, "lose");
   }
 }
 

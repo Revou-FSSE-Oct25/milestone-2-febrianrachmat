@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Clicker Game | RevoFun</title>
+  <title>Memory Card | RevoFun</title>
   <link rel="stylesheet" href="../CSS/outcomes.css" />
-  <link rel="stylesheet" href="../CSS/clicker.css" />
+  <link rel="stylesheet" href="../CSS/memory-card.css" />
 </head>
 <body>
 
-<main class="clicker-wrapper">
-  <section class="clicker-card">
+<main class="memory-wrapper">
+  <section class="game-card">
 
-    <h1 class="game-title">Clicker Challenge</h1>
-    <p class="game-desc">Click as much as you can before time runs out!</p>
+    <h1 class="game-title">Memory Card</h1>
+    <p class="game-desc">Match all pairs with as few moves as possible.</p>
 
     <div class="nickname-bar">
       <label for="nicknameInput">Nickname</label>
@@ -25,23 +25,20 @@
 
     <div class="stats">
       <div class="stat-box">
-        <span class="stat-label">Time</span>
-        <span id="time" class="stat-value">10</span>
+        <span class="stat-label">Moves</span>
+        <span id="moves" class="stat-value">0</span>
       </div>
       <div class="stat-box">
-        <span class="stat-label">Score</span>
-        <span id="score" class="stat-value">0</span>
+        <span class="stat-label">Pairs</span>
+        <span id="pairs" class="stat-value">0/4</span>
       </div>
     </div>
 
-    <div class="time-bar">
-      <div id="timeProgress"></div>
-    </div>
+    <div id="board" class="memory-board" aria-label="Memory card grid"></div>
 
-    <p id="gameStatus" class="game-status" aria-live="polite"></p>
+    <p id="status" class="game-status" aria-live="polite">Find matching pairs!</p>
 
-    <button id="clickBtn" class="click-btn">CLICK!</button>
-    <button id="restartBtn">Restart</button>
+    <button type="button" id="restartBtn">Restart</button>
 
     <div class="leaderboard-section">
       <h3>🏆 Leaderboard</h3>
@@ -55,6 +52,6 @@
 </main>
 
 <script src="../JS/utils.js"></script>
-<script src="../JS/clicker.js"></script>
+<script src="../JS/memory-card.js"></script>
 </body>
 </html>

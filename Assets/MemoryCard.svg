@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" role="img" aria-label="Memory Card game preview">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a1a2e"/>
+      <stop offset="100%" stop-color="#0f3460"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="240" fill="url(#bg)"/>
+  <rect x="60" y="50" width="60" height="70" rx="10" fill="#38bdf8"/>
+  <rect x="130" y="50" width="60" height="70" rx="10" fill="#0072ff"/>
+  <rect x="200" y="50" width="60" height="70" rx="10" fill="#38bdf8"/>
+  <rect x="270" y="50" width="60" height="70" rx="10" fill="#0072ff"/>
+  <text x="90" y="95" font-size="28" text-anchor="middle">?</text>
+  <text x="160" y="95" font-size="28" text-anchor="middle">?</text>
+  <text x="230" y="95" font-size="28" text-anchor="middle">?</text>
+  <text x="300" y="95" font-size="28" text-anchor="middle">?</text>
+  <rect x="95" y="130" width="60" height="70" rx="10" fill="rgba(255,255,255,0.15)"/>
+  <rect x="165" y="130" width="60" height="70" rx="10" fill="rgba(255,255,255,0.15)"/>
+  <rect x="235" y="130" width="60" height="70" rx="10" fill="rgba(255,255,255,0.15)"/>
+  <text x="125" y="178" font-size="26" text-anchor="middle"><®</text>
+  <text x="195" y="178" font-size="26" text-anchor="middle"><¯</text>
+  <text x="265" y="178" font-size="26" text-anchor="middle">=€</text>
+  <text x="200" y="28" fill="#e2e8f0" font-size="18" font-family="Segoe UI, sans-serif" font-weight="600" text-anchor="middle">Memory Card</text>
+</svg>

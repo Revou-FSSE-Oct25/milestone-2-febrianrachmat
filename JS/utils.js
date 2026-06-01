@@ -117,3 +117,21 @@ function setupClearLeaderboard(game, onClear) {
     }
   });
 }
+
+// =====================
+// OUTCOME ANIMATIONS (CSS class toggle)
+// =====================
+
+function playOutcomeAnimation(element, outcome) {
+  if (!element || (outcome !== "win" && outcome !== "lose")) return;
+
+  const cls = outcome === "win" ? "outcome-win" : "outcome-lose";
+  element.classList.remove("outcome-win", "outcome-lose");
+  void element.offsetWidth;
+  element.classList.add(cls);
+  element.addEventListener("animationend", () => element.classList.remove(cls), { once: true });
+}
+
+function getGamePanel() {
+  return document.querySelector(".game-card, .clicker-card");
+}

@@ -1,0 +1,31 @@
+@keyframes winFlash {
+  0%, 100% {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 28px rgba(56, 189, 248, 0.75);
+    transform: scale(1.02);
+  }
+}
+
+@keyframes loseShake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
+}
+
+.outcome-win {
+  animation: winFlash 0.65s ease;
+}
+
+.outcome-lose {
+  animation: loseShake 0.45s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .outcome-win,
+  .outcome-lose {
+    animation: none;
+  }
+}

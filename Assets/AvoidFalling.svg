@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" role="img" aria-label="Avoid Falling Objects game preview">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f0c29"/>
+      <stop offset="100%" stop-color="#24243e"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="240" fill="url(#bg2)"/>
+  <rect x="40" y="30" width="320" height="170" rx="14" fill="rgba(0,0,0,0.35)" stroke="rgba(255,255,255,0.15)"/>
+  <rect x="80" y="55" width="34" height="34" rx="8" fill="#ff6b6b"/>
+  <rect x="200" y="90" width="34" height="34" rx="8" fill="#ee5a24"/>
+  <rect x="280" y="50" width="34" height="34" rx="8" fill="#ff6b6b"/>
+  <rect x="150" y="130" width="34" height="34" rx="8" fill="#ee5a24"/>
+  <rect x="178" y="172" width="44" height="18" rx="6" fill="#0072ff"/>
+  <text x="200" y="22" fill="#e2e8f0" font-size="16" font-family="Segoe UI, sans-serif" font-weight="600" text-anchor="middle">Avoid Falling Objects</text>
+</svg>

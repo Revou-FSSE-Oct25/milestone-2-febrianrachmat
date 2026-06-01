@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Clicker Game | RevoFun</title>
+  <title>Avoid Falling Objects | RevoFun</title>
   <link rel="stylesheet" href="../CSS/outcomes.css" />
-  <link rel="stylesheet" href="../CSS/clicker.css" />
+  <link rel="stylesheet" href="../CSS/avoid-falling.css" />
 </head>
 <body>
 
-<main class="clicker-wrapper">
-  <section class="clicker-card">
+<main class="avoid-wrapper">
+  <section class="game-card">
 
-    <h1 class="game-title">Clicker Challenge</h1>
-    <p class="game-desc">Click as much as you can before time runs out!</p>
+    <h1 class="game-title">Avoid Falling Objects</h1>
+    <p class="game-desc">Dodge the falling blocks. Use ← → keys or buttons.</p>
 
     <div class="nickname-bar">
       <label for="nicknameInput">Nickname</label>
@@ -25,23 +25,26 @@
 
     <div class="stats">
       <div class="stat-box">
-        <span class="stat-label">Time</span>
-        <span id="time" class="stat-value">10</span>
-      </div>
-      <div class="stat-box">
         <span class="stat-label">Score</span>
         <span id="score" class="stat-value">0</span>
       </div>
+      <div class="stat-box">
+        <span class="stat-label">Dodged</span>
+        <span id="dodged" class="stat-value">0</span>
+      </div>
     </div>
 
-    <div class="time-bar">
-      <div id="timeProgress"></div>
+    <div id="arena" class="arena" aria-label="Game arena">
+      <div id="player" class="player"></div>
     </div>
 
-    <p id="gameStatus" class="game-status" aria-live="polite"></p>
+    <div class="controls">
+      <button type="button" id="leftBtn" aria-label="Move left">←</button>
+      <button type="button" id="startBtn">Start</button>
+      <button type="button" id="rightBtn" aria-label="Move right">→</button>
+    </div>
 
-    <button id="clickBtn" class="click-btn">CLICK!</button>
-    <button id="restartBtn">Restart</button>
+    <p id="status" class="game-status" aria-live="polite">Press Start to play!</p>
 
     <div class="leaderboard-section">
       <h3>🏆 Leaderboard</h3>
@@ -55,6 +58,6 @@
 </main>
 
 <script src="../JS/utils.js"></script>
-<script src="../JS/clicker.js"></script>
+<script src="../JS/avoid-falling.js"></script>
 </body>
 </html>

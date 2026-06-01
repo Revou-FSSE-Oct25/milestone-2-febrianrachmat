@@ -19,6 +19,7 @@ const timeText = document.getElementById("time");
 const timeProgress = document.getElementById("timeProgress");
 const leaderboard = document.getElementById("leaderboard");
 const gameStatus = document.getElementById("gameStatus");
+const gamePanel = getGamePanel();
 
 // =====================
 // INITIALIZATION
@@ -36,6 +37,7 @@ function initGame() {
 
   clearInterval(timer);
   clearTimeout(countdownTimer);
+  gamePanel.classList.remove("outcome-win", "outcome-lose");
 
   renderLeaderboard();
   startCountdown();
@@ -102,6 +104,7 @@ function endGame() {
 
   saveScore("clicker", score);
   renderLeaderboard();
+  playOutcomeAnimation(gamePanel, score > 0 ? "win" : "lose");
 }
 
 // =====================

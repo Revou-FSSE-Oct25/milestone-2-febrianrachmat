@@ -1,0 +1,249 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', system-ui, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.avoid-wrapper {
+  width: 100%;
+  padding: 20px;
+}
+
+.game-card {
+  max-width: 420px;
+  margin: auto;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(14px);
+  border-radius: 20px;
+  padding: 32px 24px;
+  text-align: center;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.35);
+}
+
+.game-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.game-desc {
+  font-size: 14px;
+  color: #cbd5e1;
+  margin-bottom: 16px;
+}
+
+.nickname-bar {
+  text-align: left;
+  margin-bottom: 14px;
+  font-size: 13px;
+}
+
+.nickname-bar label {
+  display: block;
+  margin-bottom: 6px;
+  color: #d1d9e6;
+}
+
+.nickname-status {
+  margin-top: 8px;
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.nickname-row {
+  display: flex;
+  gap: 8px;
+}
+
+.nickname-row input {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: none;
+  font-size: 14px;
+}
+
+.nickname-row button {
+  width: auto;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+.stats {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.stat-box {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 10px;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: #b8c2d9;
+}
+
+.stat-value {
+  display: block;
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+.arena {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  margin-bottom: 14px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.player {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  width: 44px;
+  height: 18px;
+  margin-left: -22px;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  box-shadow: 0 0 12px rgba(0, 114, 255, 0.5);
+  transition: left 0.08s linear;
+}
+
+.falling-object {
+  position: absolute;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.controls {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.controls button {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 16px;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+}
+
+#startBtn {
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+}
+
+.game-status {
+  min-height: 22px;
+  font-size: 14px;
+  color: #e2e8f0;
+  margin-bottom: 16px;
+}
+
+.leaderboard-section h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+#leaderboard {
+  list-style: none;
+  padding: 0;
+}
+
+#leaderboard li {
+  padding: 8px 12px;
+  margin-bottom: 6px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.12);
+  font-size: 14px;
+}
+
+#leaderboard li.rank-1 {
+  background: linear-gradient(135deg, #ffd700, #ffb700);
+  color: #000;
+  font-weight: 600;
+}
+
+#leaderboard li.rank-2 {
+  background: linear-gradient(135deg, #cfd9df, #e2ebf0);
+  color: #000;
+}
+
+#leaderboard li.rank-3 {
+  background: linear-gradient(135deg, #d1913c, #ffd194);
+  color: #000;
+}
+
+.clear-leaderboard-btn {
+  width: auto;
+  margin-top: 8px;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 8px;
+  background: transparent;
+  color: #94a3b8;
+  cursor: pointer;
+}
+
+.clear-leaderboard-btn:hover {
+  color: #e2e8f0;
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 14px;
+  text-decoration: none;
+  color: #a8d8ff;
+  font-size: 14px;
+}
+
+.back-link:hover {
+  color: #e0f2ff;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  outline: 2px solid #38bdf8;
+  outline-offset: 2px;
+}
+
+@media (max-width: 480px) {
+  .arena {
+    height: 280px;
+  }
+}

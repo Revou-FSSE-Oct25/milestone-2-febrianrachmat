@@ -56,6 +56,8 @@ revofun/
 │   ├── Clicker.png
 │   ├── GuessNumber.png
 │   ├── RockPaperScissor.png
+│   ├── MemoryCard.png
+│   ├── AvoidFalling.png
 │   ├── MemoryCard.svg
 │   ├── AvoidFalling.svg
 │   ├── favicon.svg

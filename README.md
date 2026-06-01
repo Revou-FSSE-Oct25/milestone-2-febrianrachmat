@@ -73,30 +73,33 @@ _Technologies Used_
 5. Code reuse — Leaderboard helpers live in one file, loaded by each game page
 
 **_Project Structure_**
+```
 revofun/
 │
 ├── index.html
-├── css/
-│ ├── style.css
-│ ├── clicker.css
-│ ├── number-guess.css
-│ └── rps.css
-├── games/
-│ ├── number-guess.html
-│ ├── rps.html
-│ ├── clicker.html│
-├── js/
-│ ├── main.js
-│ ├── utils.js          # shared saveScore / getScores (localStorage)
-│ ├── number-guess.js
-│ ├── rps.js
-│ └── clicker.js
-├── assets/
-│ ├── clicker.png
-│ ├── GuessNumber.png
-│ ├── RockPaperScissor.png
-│
+├── Assets/
+│   ├── Clicker.png
+│   ├── GuessNumber.png
+│   └── RockPaperScissor.png
+├── CSS/
+│   ├── style.css
+│   ├── clicker.css
+│   ├── number-guess.css
+│   └── rps.css
+├── Games/
+│   ├── number-guess.html
+│   ├── rps.html
+│   └── clicker.html
+├── JS/
+│   ├── main.js
+│   ├── utils.js          # shared saveScore / getScores (localStorage)
+│   ├── number-guess.js
+│   ├── rps.js
+│   └── clicker.js
 └── README.md
+```
+
+Paths are case-sensitive on GitHub Pages (Linux). Use `Assets/`, `CSS/`, `Games/`, and `JS/` exactly as shown above and in `index.html`.
 
 Live Website:
 

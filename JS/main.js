@@ -1,5 +1,42 @@
+// =====================
+// DOM ELEMENTS
+// =====================
+
 const header = document.querySelector(".rf-header");
+
+// =====================
+// STATE
+// =====================
+
 let lastScrollY = window.scrollY;
+
+// =====================
+// LEADERBOARD (localStorage)
+// =====================
+
+function saveScore(game, score) {
+  const data = JSON.parse(localStorage.getItem("leaderboards")) || {};
+  if (!data[game]) data[game] = [];
+
+  data[game].push({
+    score,
+    date: new Date().toLocaleDateString()
+  });
+
+  data[game].sort((a, b) => b.score - a.score);
+  data[game] = data[game].slice(0, 5);
+
+  localStorage.setItem("leaderboards", JSON.stringify(data));
+}
+
+function getScores(game) {
+  const data = JSON.parse(localStorage.getItem("leaderboards")) || {};
+  return data[game] || [];
+}
+
+// =====================
+// EVENT LISTENERS
+// =====================
 
 window.addEventListener("scroll", () => {
   const currentScrollY = window.scrollY;
@@ -9,7 +46,6 @@ window.addEventListener("scroll", () => {
   } else {
     header.classList.remove("scrolled");
   }
-
 
   if (
     currentScrollY > lastScrollY &&
@@ -23,23 +59,3 @@ window.addEventListener("scroll", () => {
 
   lastScrollY = currentScrollY;
 });
-
-function saveScore(game, score) {
-  const data = JSON.parse(localStorage.getItem("leaderboards")) || {};
-  if (!data[game]) data[game] = [];
-
-  data[game].push({
-    score,
-    date: new Date().toLocaleDateString()
-  });
-
-  data[game].sort((a, b) => b.score - a.score);
-  data[game] = data[game].slice(0, 5); // top 5
-
-  localStorage.setItem("leaderboards", JSON.stringify(data));
-}
-
-function getScores(game) {
-  const data = JSON.parse(localStorage.getItem("leaderboards")) || {};
-  return data[game] || [];
-}

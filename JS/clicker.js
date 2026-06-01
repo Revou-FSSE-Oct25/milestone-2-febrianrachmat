@@ -1,3 +1,7 @@
+// =====================
+// LEADERBOARD (localStorage)
+// =====================
+
 function saveScore(game, score) {
   const data = JSON.parse(localStorage.getItem("leaderboards")) || {};
   if (!data[game]) data[game] = [];
@@ -18,10 +22,18 @@ function getScores(game) {
   return data[game] || [];
 }
 
+// =====================
+// GAME STATE
+// =====================
+
 let score = 0;
 let time = 10;
 let timer = null;
 let gameOver = false;
+
+// =====================
+// DOM ELEMENTS
+// =====================
 
 const clickBtn = document.getElementById("clickBtn");
 const restartBtn = document.getElementById("restartBtn");
@@ -30,10 +42,9 @@ const timeText = document.getElementById("time");
 const timeProgress = document.getElementById("timeProgress");
 const leaderboard = document.getElementById("leaderboard");
 
-clickBtn.addEventListener("click", handleClick);
-restartBtn.addEventListener("click", initGame);
-
-initGame();
+// =====================
+// INITIALIZATION
+// =====================
 
 function initGame() {
   score = 0;
@@ -50,6 +61,10 @@ function initGame() {
 
   renderLeaderboard();
 }
+
+// =====================
+// GAME LOGIC
+// =====================
 
 function handleClick() {
   if (gameOver) return;
@@ -79,6 +94,10 @@ function endGame() {
   renderLeaderboard();
 }
 
+// =====================
+// LEADERBOARD UI
+// =====================
+
 function renderLeaderboard() {
   leaderboard.innerHTML = "";
 
@@ -103,3 +122,12 @@ function renderLeaderboard() {
     leaderboard.appendChild(li);
   });
 }
+
+// =====================
+// EVENT LISTENERS
+// =====================
+
+clickBtn.addEventListener("click", handleClick);
+restartBtn.addEventListener("click", initGame);
+
+initGame();

@@ -1,3 +1,7 @@
+// =====================
+// LEADERBOARD (localStorage)
+// =====================
+
 function saveScore(game, score) {
   const data = JSON.parse(localStorage.getItem("leaderboards")) || {};
   if (!data[game]) data[game] = [];
@@ -18,11 +22,17 @@ function getScores(game) {
   return data[game] || [];
 }
 
+// =====================
+// GAME STATE
+// =====================
 
 let targetNumber;
 let attemptsLeft;
 let gameOver;
 
+// =====================
+// DOM ELEMENTS
+// =====================
 
 const input = document.getElementById("guessInput");
 const message = document.getElementById("message");
@@ -31,13 +41,9 @@ const guessBtn = document.getElementById("guessBtn");
 const restartBtn = document.getElementById("restartBtn");
 const leaderboard = document.getElementById("leaderboard");
 
-
-guessBtn.addEventListener("click", handleGuess);
-restartBtn.addEventListener("click", initGame);
-
-
-initGame();
-
+// =====================
+// INITIALIZATION
+// =====================
 
 function initGame() {
   targetNumber = generateRandomNumber();
@@ -52,6 +58,14 @@ function initGame() {
   updateMessage("Start guessing!");
   renderLeaderboard();
 }
+
+function generateRandomNumber() {
+  return Math.floor(Math.random() * 100) + 1;
+}
+
+// =====================
+// GAME LOGIC
+// =====================
 
 function handleGuess() {
   if (gameOver) return;
@@ -109,6 +123,10 @@ function endGame(text, score) {
   renderLeaderboard();
 }
 
+// =====================
+// UI UPDATES
+// =====================
+
 function updateMessage(text) {
   message.textContent = text;
 }
@@ -117,10 +135,9 @@ function updateAttempts() {
   attempts.textContent = `Attempts left: ${attemptsLeft}`;
 }
 
-function generateRandomNumber() {
-  return Math.floor(Math.random() * 100) + 1;
-}
-
+// =====================
+// LEADERBOARD UI
+// =====================
 
 function renderLeaderboard() {
   leaderboard.innerHTML = "";
@@ -143,3 +160,12 @@ function renderLeaderboard() {
     leaderboard.appendChild(li);
   });
 }
+
+// =====================
+// EVENT LISTENERS
+// =====================
+
+guessBtn.addEventListener("click", handleGuess);
+restartBtn.addEventListener("click", initGame);
+
+initGame();

@@ -1,3 +1,7 @@
+// =====================
+// LEADERBOARD (localStorage)
+// =====================
+
 function saveScore(game, score) {
   const data = JSON.parse(localStorage.getItem("leaderboards")) || {};
   if (!data[game]) data[game] = [];
@@ -18,20 +22,24 @@ function getScores(game) {
   return data[game] || [];
 }
 
+// =====================
+// GAME STATE
+// =====================
+
 const choices = ["rock", "paper", "scissors"];
 let wins = 0;
+
+// =====================
+// DOM ELEMENTS
+// =====================
 
 const result = document.getElementById("result");
 const winsText = document.getElementById("wins");
 const leaderboard = document.getElementById("leaderboard");
 
-document.querySelectorAll(".choice").forEach(btn =>
-  btn.addEventListener("click", () => play(btn.dataset.choice))
-);
-
-document.getElementById("restartBtn").addEventListener("click", resetGame);
-
-renderLeaderboard();
+// =====================
+// GAME LOGIC
+// =====================
 
 function play(player) {
   const cpu = randomChoice();
@@ -55,6 +63,10 @@ function getResult(p, c) {
   return "Lose";
 }
 
+function randomChoice() {
+  return choices[Math.floor(Math.random() * 3)];
+}
+
 function resetGame() {
   saveScore("rps", wins);
   wins = 0;
@@ -63,9 +75,9 @@ function resetGame() {
   renderLeaderboard();
 }
 
-function randomChoice() {
-  return choices[Math.floor(Math.random() * 3)];
-}
+// =====================
+// LEADERBOARD UI
+// =====================
 
 function renderLeaderboard() {
   leaderboard.innerHTML = "";
@@ -89,3 +101,15 @@ function renderLeaderboard() {
     leaderboard.appendChild(li);
   });
 }
+
+// =====================
+// EVENT LISTENERS
+// =====================
+
+document.querySelectorAll(".choice").forEach(btn =>
+  btn.addEventListener("click", () => play(btn.dataset.choice))
+);
+
+document.getElementById("restartBtn").addEventListener("click", resetGame);
+
+renderLeaderboard();

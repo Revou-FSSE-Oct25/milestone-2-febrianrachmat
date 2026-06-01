@@ -2,53 +2,72 @@
 
 # RevoFun — Interactive Gaming Website
 
-**Author:** Rachmat Febrian  
-**License:** [MIT](LICENSE)  
-**Live demo:** https://revou-fsse-oct25.github.io/milestone-2-febrianrachmat/
+**Author:** Rachmat Febrian · **License:** [MIT](LICENSE)
 
-![RevoFun landing page screenshot](Assets/screenshot.png)
+RevoFun is a fictional game studio website built for Milestone 2 (Revou FSSE). It combines a portfolio-style landing page with browser-based mini games written in vanilla HTML, CSS, and JavaScript — no frameworks or build tools required.
 
-## Overview
+## Live Demo
 
-RevoFun is a fictional gaming company website created as part of Milestone 2 Assignment.
-This project showcases a landing page and multiple browser-based mini games built with HTML, CSS, and JavaScript.
+**[https://revou-fsse-oct25.github.io/milestone-2-febrianrachmat/](https://revou-fsse-oct25.github.io/milestone-2-febrianrachmat/)**
 
-The goal is to demonstrate fundamental JavaScript skills, DOM manipulation, and basic game logic while delivering an engaging, user-friendly experience.
+## Screenshots
+
+**Home (hero section)**
+
+![RevoFun home page](Assets/screenshot-home.png)
+
+**Games showcase**
+
+![RevoFun games grid](Assets/screenshot-games.png)
+
+**Memory Card (gameplay — nickname, board, leaderboard)**
+
+![Memory Card gameplay](Assets/screenshot-memory.png)
+
+**Avoid Falling Objects (gameplay — score, arena, controls)**
+
+![Avoid Falling Objects gameplay](Assets/screenshot-avoid-falling.png)
 
 ## Features
 
 ### Landing Page
-- Clean, game studio–style design with fixed navigation
-- Games showcase with visual previews
-- About section and portfolio-ready meta tags (description, Open Graph, favicon)
+- Fixed navigation with smooth scroll to Home, Games, and About
+- Games showcase grid with preview images
+- About section, favicon, meta description, and Open Graph tags for portfolio sharing
 
-### Available Games
+### Core Games (3 required)
 
-| Game | Description |
-|------|-------------|
-| **Number Guess** | Guess a number between 1–100 with 5 attempts |
-| **Rock Paper Scissors** | Classic hand game vs computer with win streak leaderboard |
-| **Clicker Game** | Click as fast as possible within a 10-second timer |
-| **Memory Card** | Match 4 pairs of cards with as few moves as possible |
-| **Avoid Falling Objects** | Dodge falling blocks using keyboard or on-screen controls |
+| Game | Highlights |
+|------|------------|
+| **Number Guess** | Guess 1–100 in 5 attempts; feedback for too high / too low |
+| **Rock Paper Scissors** | Player vs CPU; win streak saved on Restart |
+| **Clicker Game** | 3-2-1 countdown, then click as fast as possible in 10 seconds |
 
-### Shared Features
-- Player nickname (optional, saved in `localStorage`)
-- Per-game leaderboard (top 5 scores via shared `utils.js`)
-- Win/lose CSS animations (class toggle, no external library)
-- Responsive layout and accessibility improvements (labels, focus rings, ARIA)
+### Player Nickname
+- Optional nickname on every game page
+- Saved in `localStorage` and shown as **Playing as: …**
+- Guest reminder when a score is saved without a saved nickname
 
-## Technologies Used
+### Leaderboard
+- Top 5 scores per game, stored in `localStorage`
+- Shared helpers in `JS/utils.js` (`saveScore`, `getScores`, `clearLeaderboard`)
+- Clear leaderboard button on each game (demo / reset)
 
-- **HTML5** — structure and semantics
-- **CSS3** — layout, animations, responsive design
-- **JavaScript** — game logic, DOM manipulation, event handling
+### Bonus Games (stretch)
+- **Memory Card** — match 4 pairs; score based on moves
+- **Avoid Falling Objects** — dodge falling blocks with keyboard or on-screen controls
+
+## Tech Stack
+
+- **HTML5** — semantic structure and game pages
+- **CSS3** — layout, glass-style cards, flip animations, win/lose effects
+- **JavaScript (ES6+)** — game logic, DOM updates, event handling
 - **localStorage** — nickname and leaderboard persistence
 
 ## Project Structure
 
 ```
-revofun/
+milestone-2-febrianrachmat/
 │
 ├── index.html
 ├── LICENSE
@@ -58,16 +77,18 @@ revofun/
 │   ├── RockPaperScissor.png
 │   ├── MemoryCard.png
 │   ├── AvoidFalling.png
-│   ├── MemoryCard.svg
-│   ├── AvoidFalling.svg
 │   ├── favicon.svg
-│   └── screenshot.png
+│   ├── screenshot.png
+│   ├── screenshot-home.png
+│   ├── screenshot-games.png
+│   ├── screenshot-memory.png
+│   └── screenshot-avoid-falling.png
 ├── CSS/
 │   ├── style.css
 │   ├── outcomes.css
-│   ├── clicker.css
 │   ├── number-guess.css
 │   ├── rps.css
+│   ├── clicker.css
 │   ├── memory-card.css
 │   └── avoid-falling.css
 ├── Games/
@@ -87,29 +108,41 @@ revofun/
 └── README.md
 ```
 
-Paths are **case-sensitive** on GitHub Pages (Linux). Use `Assets/`, `CSS/`, `Games/`, and `JS/` exactly as shown above and in `index.html`.
+> Paths are **case-sensitive** on GitHub Pages. Use `Assets/`, `CSS/`, `Games/`, and `JS/` exactly as in `index.html`.
 
-## Getting Started
+## How to Run Locally
 
-1. Clone this repository
-2. Open `index.html` in a browser (or visit the live demo URL above)
-3. No build step or dependencies required
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Revou-FSSE-Oct25/milestone-2-febrianrachmat.git
+   cd milestone-2-febrianrachmat
+   ```
+2. Open `index.html` in a browser, **or** serve the folder:
+   ```bash
+   npx serve .
+   ```
+3. Visit `http://localhost:3000` (or the port shown in the terminal).
+
+No install or build step is required.
 
 ## Learning Outcomes
 
-Through this project, I practiced:
+- Structured multi-page HTML and reusable CSS patterns
+- DOM manipulation and event-driven game logic in plain JavaScript
+- Input validation, timers, and collision-style gameplay
+- Persisting nickname and leaderboard data with `localStorage`
+- Shared utilities (`utils.js`) instead of duplicating code per game
+- Basic accessibility: labels, focus rings, `aria-live`, and `aria-label`
 
-- Writing clean and structured HTML
-- Styling layouts with modern CSS
-- Using JavaScript for game logic and DOM updates
-- Handling user events (click, input, keyboard)
-- Persisting data with `localStorage`
-- Organizing files for a small multi-page web project
-- Reusing shared logic (`utils.js`) across game scripts
+## Challenges & What I Learned
+
+- **Case-sensitive paths** — GitHub Pages (Linux) broke assets when folder names did not match exactly (`Assets/` vs `assets/`).
+- **RPS scoring UX** — wins only save on Restart; added an on-screen hint so players know when scores hit the leaderboard.
+- **Shared state** — centralizing nickname and leaderboard in `utils.js` kept all five games consistent with less duplication.
+- **Stretch scope** — adding Memory Card and Avoid Falling Objects pushed me to plan grid layouts, flip animations, and a simple game loop with `requestAnimationFrame`.
 
 ---
 
 © 2025 Rachmat Febrian · [MIT License](LICENSE)
 
-This project was created as a learning assignment for Revou FSSE.
-All code was written manually to ensure understanding of core web development concepts.
+Built as a learning assignment for Revou FSSE. All code was written manually to practice core web fundamentals.

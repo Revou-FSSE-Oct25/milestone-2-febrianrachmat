@@ -1,28 +1,4 @@
 // =====================
-// LEADERBOARD (localStorage)
-// =====================
-
-function saveScore(game, score) {
-  const data = JSON.parse(localStorage.getItem("leaderboards")) || {};
-  if (!data[game]) data[game] = [];
-
-  data[game].push({
-    score,
-    date: new Date().toLocaleDateString()
-  });
-
-  data[game].sort((a, b) => b.score - a.score);
-  data[game] = data[game].slice(0, 5);
-
-  localStorage.setItem("leaderboards", JSON.stringify(data));
-}
-
-function getScores(game) {
-  const data = JSON.parse(localStorage.getItem("leaderboards")) || {};
-  return data[game] || [];
-}
-
-// =====================
 // GAME STATE
 // =====================
 
@@ -53,15 +29,20 @@ function play(player) {
   }
 }
 
-// Classic RPS rules: same choice = draw; winning pairs return "Win"
+// Classic RPS rules: switch on player choice, then compare CPU pick
 function getResult(p, c) {
   if (p === c) return "Draw";
-  if (
-    (p === "rock" && c === "scissors") ||
-    (p === "paper" && c === "rock") ||
-    (p === "scissors" && c === "paper")
-  ) return "Win";
-  return "Lose";
+
+  switch (p) {
+    case "rock":
+      return c === "scissors" ? "Win" : "Lose";
+    case "paper":
+      return c === "rock" ? "Win" : "Lose";
+    case "scissors":
+      return c === "paper" ? "Win" : "Lose";
+    default:
+      return "Lose";
+  }
 }
 
 function randomChoice() {

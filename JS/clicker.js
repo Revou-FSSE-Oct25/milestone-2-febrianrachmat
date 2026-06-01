@@ -141,4 +141,5 @@ clickBtn.addEventListener("click", handleClick);
 restartBtn.addEventListener("click", initGame);
 
 setupNickname();
+setupClearLeaderboard("clicker", renderLeaderboard);
 initGame();

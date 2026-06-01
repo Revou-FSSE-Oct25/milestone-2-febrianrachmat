@@ -4,6 +4,7 @@
 
 const choices = ["rock", "paper", "scissors"];
 let wins = 0;
+let guestPromptShown = false;
 
 // =====================
 // DOM ELEMENTS
@@ -18,6 +19,11 @@ const leaderboard = document.getElementById("leaderboard");
 // =====================
 
 function play(player) {
+  if (!hasSavedNickname() && !guestPromptShown) {
+    guestPromptShown = true;
+    updateNicknameStatus("Tip: save a nickname above before Restart to label your score.");
+  }
+
   const cpu = randomChoice();
   const outcome = getResult(player, cpu);
 
@@ -95,4 +101,5 @@ document.querySelectorAll(".choice").forEach(btn =>
 document.getElementById("restartBtn").addEventListener("click", resetGame);
 
 setupNickname();
+setupClearLeaderboard("rps", renderLeaderboard);
 renderLeaderboard();

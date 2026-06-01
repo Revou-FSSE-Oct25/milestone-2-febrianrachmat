@@ -154,4 +154,5 @@ input.addEventListener("keydown", (e) => {
 });
 
 setupNickname();
+setupClearLeaderboard("number-guess", renderLeaderboard);
 initGame();

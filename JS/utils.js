@@ -65,6 +65,11 @@ function getDisplayName(entry) {
   return entry.nickname || "Guest";
 }
 
+function hasSavedNickname() {
+  const name = localStorage.getItem(NICKNAME_KEY);
+  return !!(name && name.trim());
+}
+
 // =====================
 // LEADERBOARD (localStorage)
 // =====================
@@ -93,4 +98,22 @@ function saveScore(game, score) {
 function getScores(game) {
   const data = JSON.parse(localStorage.getItem("leaderboards")) || {};
   return data[game] || [];
+}
+
+function clearLeaderboard(game) {
+  const data = JSON.parse(localStorage.getItem("leaderboards")) || {};
+  delete data[game];
+  localStorage.setItem("leaderboards", JSON.stringify(data));
+}
+
+function setupClearLeaderboard(game, onClear) {
+  const btn = document.getElementById("clearLeaderboardBtn");
+  if (!btn) return;
+
+  btn.addEventListener("click", () => {
+    if (confirm("Clear all scores for this game?")) {
+      clearLeaderboard(game);
+      if (onClear) onClear();
+    }
+  });
 }

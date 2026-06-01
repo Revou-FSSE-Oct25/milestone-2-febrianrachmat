@@ -29,17 +29,15 @@ function play(player) {
   }
 }
 
-// Classic RPS rules: switch on player choice, then compare CPU pick
+// Classic RPS rules: switch on "player-cpu" matchup to decide Win or Lose
 function getResult(p, c) {
   if (p === c) return "Draw";
 
-  switch (p) {
-    case "rock":
-      return c === "scissors" ? "Win" : "Lose";
-    case "paper":
-      return c === "rock" ? "Win" : "Lose";
-    case "scissors":
-      return c === "paper" ? "Win" : "Lose";
+  switch (`${p}-${c}`) {
+    case "rock-scissors":
+    case "paper-rock":
+    case "scissors-paper":
+      return "Win";
     default:
       return "Lose";
   }

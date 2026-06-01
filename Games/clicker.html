@@ -13,6 +13,14 @@
     <h1 class="game-title">Clicker Challenge</h1>
     <p class="game-desc">Click as much as you can before time runs out!</p>
 
+    <div class="nickname-bar">
+      <label for="nicknameInput">Nickname</label>
+      <div class="nickname-row">
+        <input type="text" id="nicknameInput" placeholder="Enter nickname" maxlength="20" autocomplete="nickname">
+        <button type="button" id="saveNicknameBtn">Save</button>
+      </div>
+    </div>
+
     <div class="stats">
       <div class="stat-box">
         <span class="stat-label">Time</span>
@@ -27,6 +35,8 @@
     <div class="time-bar">
       <div id="timeProgress"></div>
     </div>
+
+    <p id="gameStatus" class="game-status" aria-live="polite"></p>
 
     <button id="clickBtn" class="click-btn">CLICK!</button>
     <button id="restartBtn">Restart</button>

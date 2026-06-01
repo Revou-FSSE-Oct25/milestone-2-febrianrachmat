@@ -73,7 +73,7 @@ function renderLeaderboard() {
   scores.forEach((s, index) => {
     const li = document.createElement("li");
 
-    li.textContent = `#${index + 1} — Wins: ${s.score} (${s.date})`;
+    li.textContent = `#${index + 1} — ${getDisplayName(s)}: ${s.score} wins (${s.date})`;
 
     if (index === 0) li.classList.add("rank-1");
     if (index === 1) li.classList.add("rank-2");
@@ -94,4 +94,5 @@ document.querySelectorAll(".choice").forEach(btn =>
 
 document.getElementById("restartBtn").addEventListener("click", resetGame);
 
+setupNickname();
 renderLeaderboard();

@@ -17,6 +17,7 @@ const scoreText = document.getElementById("score");
 const timeText = document.getElementById("time");
 const timeProgress = document.getElementById("timeProgress");
 const leaderboard = document.getElementById("leaderboard");
+const gameStatus = document.getElementById("gameStatus");
 
 // =====================
 // INITIALIZATION
@@ -31,6 +32,7 @@ function initGame() {
   timeText.textContent = time;
   timeProgress.style.width = "100%";
   clickBtn.disabled = false;
+  gameStatus.textContent = "";
 
   // Clear previous interval before starting a new round (avoids multiple timers)
   clearInterval(timer);
@@ -69,6 +71,7 @@ function endGame() {
   clearInterval(timer);
   // Stop clicks once the countdown reaches zero
   clickBtn.disabled = true;
+  gameStatus.textContent = `Time's up! Final score: ${score}`;
 
   saveScore("clicker", score);
   renderLeaderboard();
@@ -91,7 +94,7 @@ function renderLeaderboard() {
   scores.forEach((item, index) => {
     const li = document.createElement("li");
     li.innerHTML = `
-      <span>#${index + 1}</span>
+      <span>#${index + 1} ${getDisplayName(item)}</span>
       <span>${item.score} clicks</span>
     `;
 
@@ -110,4 +113,5 @@ function renderLeaderboard() {
 clickBtn.addEventListener("click", handleClick);
 restartBtn.addEventListener("click", initGame);
 
+setupNickname();
 initGame();

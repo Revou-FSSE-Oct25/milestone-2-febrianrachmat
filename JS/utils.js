@@ -1,14 +1,60 @@
 // =====================
+// NICKNAME (localStorage)
+// =====================
+
+const NICKNAME_KEY = "revofun-nickname";
+
+function getNickname() {
+  const name = localStorage.getItem(NICKNAME_KEY);
+  return name && name.trim() ? name.trim() : "Guest";
+}
+
+function setNickname(name) {
+  const trimmed = (name || "").trim().slice(0, 20);
+  if (trimmed) {
+    localStorage.setItem(NICKNAME_KEY, trimmed);
+  } else {
+    localStorage.removeItem(NICKNAME_KEY);
+  }
+}
+
+// Wire nickname input on each game page (call once after DOM is ready)
+function setupNickname() {
+  const input = document.getElementById("nicknameInput");
+  const btn = document.getElementById("saveNicknameBtn");
+  if (!input) return;
+
+  const stored = localStorage.getItem(NICKNAME_KEY);
+  if (stored) input.value = stored;
+
+  function persist() {
+    setNickname(input.value);
+  }
+
+  if (btn) btn.addEventListener("click", persist);
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      persist();
+    }
+  });
+}
+
+function getDisplayName(entry) {
+  return entry.nickname || "Guest";
+}
+
+// =====================
 // LEADERBOARD (localStorage)
 // =====================
 
-// Shared helpers — one object in localStorage, keyed by game name
 function saveScore(game, score) {
   const data = JSON.parse(localStorage.getItem("leaderboards")) || {};
   if (!data[game]) data[game] = [];
 
   data[game].push({
     score,
+    nickname: getNickname(),
     date: new Date().toLocaleDateString()
   });
 

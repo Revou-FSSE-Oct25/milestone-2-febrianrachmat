@@ -17,6 +17,14 @@
       You have <strong>5 attempts</strong>
     </p>
 
+    <div class="nickname-bar">
+      <label for="nicknameInput">Nickname</label>
+      <div class="nickname-row">
+        <input type="text" id="nicknameInput" placeholder="Enter nickname" maxlength="20" autocomplete="nickname">
+        <button type="button" id="saveNicknameBtn">Save</button>
+      </div>
+    </div>
+
     <div class="number-box">?</div>
 
     <input
@@ -30,7 +38,7 @@
     <button id="guessBtn">Guess</button>
     <button id="restartBtn">Restart</button>
 
-    <p class="feedback" id="message">Good luck!</p>
+    <p class="feedback" id="message" aria-live="polite">Good luck!</p>
     <p class="attempt" id="attempts"></p>
 
     <ul id="leaderboard"></ul>

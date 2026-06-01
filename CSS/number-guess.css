@@ -38,6 +38,35 @@ body {
   opacity: 0.85;
 }
 
+.nickname-bar {
+  text-align: left;
+  margin: 16px 0;
+  font-size: 13px;
+}
+
+.nickname-bar label {
+  display: block;
+  margin-bottom: 6px;
+  opacity: 0.85;
+}
+
+.nickname-row {
+  display: flex;
+  gap: 8px;
+}
+
+.nickname-row input {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+.nickname-row button {
+  width: auto;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
 .number-box {
   margin: 20px auto;
   width: 80px;

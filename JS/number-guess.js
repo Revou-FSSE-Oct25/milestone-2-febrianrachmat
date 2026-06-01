@@ -131,7 +131,7 @@ function renderLeaderboard() {
 
   scores.forEach((item, index) => {
     const li = document.createElement("li");
-    li.textContent = `#${index + 1} — Score: ${item.score} (${item.date})`;
+    li.textContent = `#${index + 1} — ${getDisplayName(item)}: ${item.score} (${item.date})`;
 
     if (index === 0) li.classList.add("rank-1");
     if (index === 1) li.classList.add("rank-2");
@@ -148,4 +148,10 @@ function renderLeaderboard() {
 guessBtn.addEventListener("click", handleGuess);
 restartBtn.addEventListener("click", initGame);
 
+// Submit guess with Enter key
+input.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") handleGuess();
+});
+
+setupNickname();
 initGame();

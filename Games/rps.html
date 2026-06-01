@@ -12,6 +12,14 @@
       <h1 class="game-title">Rock Paper Scissors</h1>
       <p class="game-subtitle">Choose your move</p>
 
+      <div class="nickname-bar">
+        <label for="nicknameInput">Nickname</label>
+        <div class="nickname-row">
+          <input type="text" id="nicknameInput" placeholder="Enter nickname" maxlength="20" autocomplete="nickname">
+          <button type="button" id="saveNicknameBtn">Save</button>
+        </div>
+      </div>
+
       <div class="rps-buttons">
         <button class="choice" data-choice="rock">✊</button>
         <button class="choice" data-choice="paper">✋</button>
@@ -19,7 +27,7 @@
         <button id="restartBtn">Restart</button>
       </div>
 
-      <p id="result"></p>
+      <p id="result" aria-live="polite"></p>
       <p>Wins: <span id="wins">0</span></p>
 
       <ul id="leaderboard"></ul>

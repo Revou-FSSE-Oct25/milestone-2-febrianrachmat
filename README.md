@@ -50,6 +50,10 @@ The website includes the following JavaScript-based games:
    Score tracking
    Leaderboard stored using localStorage
 
+_Player nickname_
+
+Enter a nickname before playing (saved in localStorage and shown on leaderboards across all games).
+
 Each game has:
 
 - Clear instructions

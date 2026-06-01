@@ -18,17 +18,36 @@ function setNickname(name) {
   }
 }
 
+function updateNicknameStatus(note) {
+  const status = document.getElementById("nicknameStatus");
+  if (!status) return;
+
+  let text = `Playing as: ${getNickname()}`;
+  if (note) text += ` · ${note}`;
+  status.textContent = text;
+}
+
 // Wire nickname input on each game page (call once after DOM is ready)
 function setupNickname() {
   const input = document.getElementById("nicknameInput");
   const btn = document.getElementById("saveNicknameBtn");
   if (!input) return;
 
+  const bar = input.closest(".nickname-bar");
+  if (bar && !document.getElementById("nicknameStatus")) {
+    const status = document.createElement("p");
+    status.id = "nicknameStatus";
+    status.className = "nickname-status";
+    status.setAttribute("aria-live", "polite");
+    bar.appendChild(status);
+  }
+
   const stored = localStorage.getItem(NICKNAME_KEY);
   if (stored) input.value = stored;
 
   function persist() {
     setNickname(input.value);
+    updateNicknameStatus();
   }
 
   if (btn) btn.addEventListener("click", persist);
@@ -38,6 +57,8 @@ function setupNickname() {
       persist();
     }
   });
+
+  updateNicknameStatus();
 }
 
 function getDisplayName(entry) {
@@ -63,6 +84,10 @@ function saveScore(game, score) {
   data[game] = data[game].slice(0, 5);
 
   localStorage.setItem("leaderboards", JSON.stringify(data));
+
+  if (getNickname() === "Guest" && score > 0) {
+    updateNicknameStatus("Score saved as Guest — set a nickname above to use your name.");
+  }
 }
 
 function getScores(game) {

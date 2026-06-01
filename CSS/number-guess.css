@@ -50,6 +50,12 @@ body {
   color: #d1d9e6;
 }
 
+.nickname-status {
+  margin-top: 8px;
+  font-size: 12px;
+  color: #94a3b8;
+}
+
 .guess-bar {
   text-align: left;
   margin-bottom: 12px;
@@ -122,6 +128,16 @@ button {
 }
 
 #guessBtn:hover {
+  background: #00f2fe;
+  transform: translateY(-2px);
+}
+
+#restartBtn {
+  margin-top: 8px;
+  background: #4facfe;
+}
+
+#restartBtn:hover {
   background: #00f2fe;
   transform: translateY(-2px);
 }

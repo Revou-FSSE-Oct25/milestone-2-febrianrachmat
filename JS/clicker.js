@@ -5,6 +5,7 @@
 let score = 0;
 let time = 10;
 let timer = null;
+let countdownTimer = null;
 let gameOver = false;
 
 // =====================
@@ -31,14 +32,39 @@ function initGame() {
   scoreText.textContent = score;
   timeText.textContent = time;
   timeProgress.style.width = "100%";
-  clickBtn.disabled = false;
-  gameStatus.textContent = "";
+  clickBtn.disabled = true;
 
-  // Clear previous interval before starting a new round (avoids multiple timers)
   clearInterval(timer);
-  timer = setInterval(tick, 1000);
+  clearTimeout(countdownTimer);
 
   renderLeaderboard();
+  startCountdown();
+}
+
+function startCountdown() {
+  let count = 3;
+  gameStatus.textContent = String(count);
+  gameStatus.classList.add("countdown");
+
+  function tickCountdown() {
+    count--;
+    if (count > 0) {
+      gameStatus.textContent = String(count);
+      countdownTimer = setTimeout(tickCountdown, 1000);
+    } else if (count === 0) {
+      gameStatus.textContent = "Go!";
+      countdownTimer = setTimeout(startRound, 500);
+    }
+  }
+
+  countdownTimer = setTimeout(tickCountdown, 1000);
+}
+
+function startRound() {
+  gameStatus.classList.remove("countdown");
+  gameStatus.textContent = "";
+  clickBtn.disabled = false;
+  timer = setInterval(tick, 1000);
 }
 
 // =====================
@@ -69,6 +95,7 @@ function tick() {
 function endGame() {
   gameOver = true;
   clearInterval(timer);
+  clearTimeout(countdownTimer);
   // Stop clicks once the countdown reaches zero
   clickBtn.disabled = true;
   gameStatus.textContent = `Time's up! Final score: ${score}`;

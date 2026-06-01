@@ -56,6 +56,7 @@ function initGame() {
   timeProgress.style.width = "100%";
   clickBtn.disabled = false;
 
+  // Clear previous interval before starting a new round (avoids multiple timers)
   clearInterval(timer);
   timer = setInterval(tick, 1000);
 
@@ -71,6 +72,7 @@ function handleClick() {
   score++;
   scoreText.textContent = score;
 
+  // Brief shake animation on each click for visual feedback
   clickBtn.classList.add("shake");
   setTimeout(() => clickBtn.classList.remove("shake"), 150);
 }
@@ -78,6 +80,7 @@ function handleClick() {
 function tick() {
   time--;
   timeText.textContent = time;
+  // Shrink progress bar as remaining time decreases (10s total)
   timeProgress.style.width = (time / 10) * 100 + "%";
 
   if (time === 0) {
@@ -88,6 +91,7 @@ function tick() {
 function endGame() {
   gameOver = true;
   clearInterval(timer);
+  // Stop clicks once the countdown reaches zero
   clickBtn.disabled = true;
 
   saveScore("clicker", score);

@@ -53,6 +53,7 @@ function play(player) {
   }
 }
 
+// Classic RPS rules: same choice = draw; winning pairs return "Win"
 function getResult(p, c) {
   if (p === c) return "Draw";
   if (
@@ -68,6 +69,7 @@ function randomChoice() {
 }
 
 function resetGame() {
+  // Save current win streak to leaderboard before resetting the counter
   saveScore("rps", wins);
   wins = 0;
   winsText.textContent = wins;
@@ -106,6 +108,7 @@ function renderLeaderboard() {
 // EVENT LISTENERS
 // =====================
 
+// data-choice on each button holds "rock", "paper", or "scissors"
 document.querySelectorAll(".choice").forEach(btn =>
   btn.addEventListener("click", () => play(btn.dataset.choice))
 );

@@ -2,6 +2,7 @@
 // LEADERBOARD (localStorage)
 // =====================
 
+// Shared leaderboard helpers — one object in localStorage, keyed by game name
 function saveScore(game, score) {
   const data = JSON.parse(localStorage.getItem("leaderboards")) || {};
   if (!data[game]) data[game] = [];
@@ -68,6 +69,7 @@ function generateRandomNumber() {
 // =====================
 
 function handleGuess() {
+  // Block further guesses after win or loss
   if (gameOver) return;
 
   const value = input.value.trim();
@@ -88,6 +90,7 @@ function validateInput(value) {
 
   const number = Number(value);
 
+  // Reject decimals (e.g. 50.5) even though input type is "number"
   if (!Number.isInteger(number)) {
     return { valid: false, message: "Please enter a whole number." };
   }
@@ -103,6 +106,7 @@ function processGuess(guess) {
   attemptsLeft--;
   updateAttempts();
 
+  // Higher score = more attempts left when the player wins
   if (guess === targetNumber) {
     endGame("🎉 Correct! You win!", attemptsLeft);
   } else if (attemptsLeft === 0) {
@@ -116,6 +120,7 @@ function endGame(text, score) {
   gameOver = true;
   updateMessage(text);
 
+  // Disable controls so the player cannot keep guessing after the round ends
   input.disabled = true;
   guessBtn.disabled = true;
 

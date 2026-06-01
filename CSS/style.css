@@ -146,7 +146,7 @@ body {
 
 .about-content p {
   font-size: 16px;
-  color: #94a3b8;
+  color: #a8b4c4;
   max-width: 760px;
   margin-bottom: 18px;
 }
@@ -234,9 +234,15 @@ input {
   padding: 10px;
   border-radius: 6px;
   border: none;
-  outline: none;
   margin-top: 10px;
   font-size: 14px;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  outline: 2px solid #38bdf8;
+  outline-offset: 2px;
 }
 
 a {
@@ -252,7 +258,7 @@ a:hover {
   margin-top: 80px;
   padding: 24px;
   font-size: 14px;
-  color: #64748b;
+  color: #94a3b8;
   border-top: 1px solid rgba(148,163,184,0.2);
 }
 

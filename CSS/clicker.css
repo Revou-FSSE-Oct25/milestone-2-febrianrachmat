@@ -38,7 +38,7 @@ body {
 
 .game-desc {
   font-size: 14px;
-  opacity: 0.8;
+  color: #cbd5e1;
   margin-bottom: 20px;
 }
 
@@ -51,7 +51,7 @@ body {
 .nickname-bar label {
   display: block;
   margin-bottom: 6px;
-  opacity: 0.85;
+  color: #d1d9e6;
 }
 
 .nickname-row {
@@ -64,7 +64,6 @@ body {
   padding: 12px 14px;
   border-radius: 10px;
   border: none;
-  outline: none;
   font-size: 14px;
 }
 
@@ -83,7 +82,7 @@ body {
   min-height: 22px;
   font-size: 14px;
   margin-bottom: 12px;
-  opacity: 0.9;
+  color: #e2e8f0;
 }
 
 .stats {
@@ -102,7 +101,7 @@ body {
 
 .stat-label {
   font-size: 12px;
-  opacity: 0.7;
+  color: #b8c2d9;
 }
 
 .stat-value {
@@ -166,7 +165,14 @@ body {
 }
 
 .back-link:hover {
-  opacity: 0.7;
+  color: #e0f2ff;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  outline: 2px solid #38bdf8;
+  outline-offset: 2px;
 }
 
 @media (max-width: 480px) {

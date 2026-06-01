@@ -38,7 +38,7 @@ body {
 
 .game-subtitle {
   font-size: 14px;
-  opacity: 0.8;
+  color: #cbd5e1;
   margin-bottom: 24px;
 }
 
@@ -51,7 +51,7 @@ body {
 .nickname-bar label {
   display: block;
   margin-bottom: 6px;
-  opacity: 0.85;
+  color: #d1d9e6;
 }
 
 .nickname-row {
@@ -64,7 +64,6 @@ body {
   padding: 10px 12px;
   border-radius: 10px;
   border: none;
-  outline: none;
   font-size: 14px;
 }
 
@@ -175,6 +174,13 @@ body {
 }
 
 #leaderboard .empty {
-  opacity: 0.6;
+  color: #94a3b8;
   text-align: center;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  outline: 2px solid #38bdf8;
+  outline-offset: 2px;
 }

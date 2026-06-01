@@ -35,7 +35,7 @@ body {
 
 .subtitle {
   font-size: 14px;
-  opacity: 0.85;
+  color: #cbd5e1;
 }
 
 .nickname-bar {
@@ -47,7 +47,19 @@ body {
 .nickname-bar label {
   display: block;
   margin-bottom: 6px;
-  opacity: 0.85;
+  color: #d1d9e6;
+}
+
+.guess-bar {
+  text-align: left;
+  margin-bottom: 12px;
+  font-size: 13px;
+}
+
+.guess-bar label {
+  display: block;
+  margin-bottom: 6px;
+  color: #d1d9e6;
 }
 
 .nickname-row {
@@ -86,10 +98,13 @@ input {
   padding: 10px;
   border-radius: 10px;
   border: none;
-  outline: none;
   text-align: center;
   margin-bottom: 12px;
   font-size: 14px;
+}
+
+.guess-bar input {
+  margin-bottom: 0;
 }
 
 button {
@@ -119,19 +134,25 @@ button {
 
 .attempt {
   font-size: 13px;
-  opacity: 0.75;
+  color: #cbd5e1;
 }
 
 .back-home {
   display: inline-block;
   margin-top: 18px;
   font-size: 13px;
-  color: #fff;
-  opacity: 0.8;
+  color: #b8e0ff;
   text-decoration: none;
   transition: 0.3s;
 }
 
 .back-home:hover {
-  opacity: 1;
+  color: #e0f2ff;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  outline: 2px solid #38bdf8;
+  outline-offset: 2px;
 }
